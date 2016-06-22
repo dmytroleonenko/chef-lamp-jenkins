@@ -1,0 +1,6 @@
+include_recipe 'selinux'
+include_recipe 'ssl_certificate'
+include_recipe 'chef-lamp-jenkins::firewall'
+include_recipe 'chef-lamp-jenkins::mysql'
+include_recipe 'chef-lamp-jenkins::jenkins-tomcat'
+include_recipe 'chef-lamp-jenkins::httpd'

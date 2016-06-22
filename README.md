@@ -1,0 +1,8 @@
+- LAMP + https (self-signed)
+- Tomcat
+- Jenkins on /jenkins
+- http -> https for /jenkins
+- phpinfo on /
+- mysql on localhost
+- Tests
+- Passes Foodcritic

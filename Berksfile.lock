@@ -1,0 +1,30 @@
+DEPENDENCIES
+  chef-lamp-jenkins
+    path: .
+    metadata: true
+  mysql
+
+GRAPH
+  chef-lamp-jenkins (1.0.0)
+    firewall (~> 2.5)
+    httpd (~> 0.3)
+    mysql (~> 7.0)
+    selinux (~> 0.9.0)
+    ssl_certificate (~> 1.12)
+  chef-sugar (3.3.0)
+  compat_resource (12.10.6)
+  firewall (2.5.2)
+    chef-sugar (>= 0.0.0)
+  httpd (0.4.0)
+    compat_resource (>= 12.5.11)
+  mysql (7.1.1)
+    smf (>= 0.0.0)
+    yum-mysql-community (>= 0.0.0)
+  rbac (1.0.3)
+  selinux (0.9.0)
+  smf (2.2.8)
+    rbac (>= 1.0.1)
+  ssl_certificate (1.12.0)
+  yum (3.11.0)
+  yum-mysql-community (0.2.0)
+    yum (>= 3.2)

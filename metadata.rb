@@ -1,0 +1,13 @@
+name 			'chef-lamp-jenkins'
+issues_url 		'https://github.com/dmytroleonenko/chef-lamp-jenkins/issues'
+source_url		'https://github.com/dmytroleonenko/chef-lamp-jenkins'
+maintainer 		'Dmytro Leonenko'
+maintainer_email 	'dmitry.leonenko@gmail.com'
+description 		'Installs Apache http and Jenkins on Tomcat'
+version 		'1.0'
+
+depends 		'firewall', '~> 2.5'
+depends 		'httpd', '~> 0.3'
+depends 		'mysql', '~> 7.0'
+depends 		'ssl_certificate', '~> 1.12'
+depends 		'selinux', '~> 0.9.0'

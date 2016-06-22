@@ -1,0 +1,55 @@
+<VirtualHost *:80>
+  ServerName default
+  DocumentRoot /var/www/html
+  ServerSignature Off
+
+  RewriteEngine On
+  RewriteRule ^/jenkins($|/.*$) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # hardening + performance
+  <Directory />
+          Options -Indexes -FollowSymLinks
+          AllowOverride None
+  </Directory>
+
+  ErrorLog /var/log/httpd/error.log
+  LogFormat "%h %l %u %t \"%r\" %>s %b" common
+  CustomLog /var/log/httpd/access.log common
+  LogLevel info
+
+  AddType application/x-httpd-php .php
+  DirectoryIndex phpinfo.php index.php index.html
+
+</VirtualHost>
+
+<VirtualHost *:443>
+  ServerName default
+  DocumentRoot /var/www/html
+  ServerSignature Off
+
+  RewriteEngine On
+  RewriteRule   ^/jenkins$  /jenkins/   [R,L]
+
+  # SSL
+  SSLEngine on
+  SSLCertificateFile /etc/pki/tls/certs/default.pem
+  SSLCertificateKeyFile /etc/pki/tls/private/default.key
+
+  # Proxy jenkins
+  ProxyPass /jenkins ajp://127.0.0.1:8009/jenkins
+  ProxyPassReverse /jenkins ajp://127.0.0.1:8009/jenkins
+
+  # hardening + performance
+  <Directory />
+          Options -Indexes -FollowSymLinks
+          AllowOverride None
+  </Directory>
+
+  ErrorLog /var/log/httpd/error.log
+  LogFormat "%h %l %u %t \"%r\" %>s %b" common
+  CustomLog /var/log/httpd/access.log common
+  LogLevel info
+
+  AddType application/x-httpd-php .php
+  DirectoryIndex phpinfo.php index.php index.html
+</VirtualHost>
